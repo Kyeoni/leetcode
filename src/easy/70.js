@@ -27,20 +27,49 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
-    function methodC(up,down) {
-        let result = 1
-        let upTemp = up
-        for (let i = 1; i <= upTemp; i++, up--, down--) {
-            result *=  down / up
-        }
-        return result
-    }
-    let result = 1
-    for (let i = 1; i <= Math.floor(n/2); i++) {
-        result += methodC(i,n-i)
-    }
-    return result
-};
+// var climbStairs = function(n) {
+//     function methodC(up,down) {
+//         let result = 1
+//         let upTemp = up
+//         for (let i = 1; i <= upTemp; i++, up--, down--) {
+//             result *=  down / up
+//         }
+//         return result
+//     }
+//     let result = 1
+//     for (let i = 1; i <= Math.floor(n/2); i++) {
+//         result += methodC(i,n-i)
+//     }
+//     return result
+// };
 
-console.log(climbStairs(5))
+
+/**
+ * 不难发现，这个问题可以被分解为一些包含最优子结构的子问题，即它的最优解可以从其子问题的最优解来有效地构建，我们可以使用动态规划来解决这一问题。
+
+第 i 阶可以由以下两种方法得到：
+
+在第 (i − 1)阶后向上爬一阶。
+
+在第(i−2) 阶后向上爬 2 阶。
+
+所以到达第 i 阶的方法总数就是到第 (i−1) 阶和第 (i−2) 阶的方法数之和。
+
+令 dp[i] 表示能到达第 i 阶的方法总数：
+
+dp[i]=dp[i−1]+dp[i−2]
+
+ */
+var climbStairs = function (n) {
+    let dp = []
+    dp.push(1)
+    dp.push(1)
+
+    for (let i = 2; i <= n; i++) {
+        dp.push(dp[i-1] + dp[i-2])
+    }
+
+    return dp[n]
+}
+
+console.log(climbStairs(6))
