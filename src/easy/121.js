@@ -22,14 +22,33 @@
  * @param {number[]} prices
  * @return {number}
  */
+// var maxProfit = function(prices) {
+//     let max = 0
+//     for (let i = 0; i < prices.length; i++) {
+//         for (let j = i + 1; j < prices.length; j++) {
+//             max = Math.max(prices[j]-prices[i],max)
+//         }
+//     }
+//     return max
+// };
+
+// 按照题解修改的版本
 var maxProfit = function(prices) {
-    let max = 0
-    for (let i = 0; i < prices.length; i++) {
-        for (let j = i + 1; j < prices.length; j++) {
-            max = Math.max(prices[j]-prices[i],max)
+    // 低谷
+    let minPrice = prices[0]
+    // 最大利润
+    let maxProfit = 0
+    for (let i = 1; i < prices.length; i++) {
+        // 如果当前值小于低谷的值，那么认为它是新的低谷
+        if (prices[i] < minPrice) {
+            minPrice = prices[i]
+        } else if (prices[i] - minPrice > maxProfit) {
+            // 否则它不是低谷，去算他的利润是不是大于最大利润
+            // 是的话就赋值给最大利润
+            maxProfit = prices[i] - minPrice
         }
     }
-    return max
+    return maxProfit
 };
 
-console.log(maxProfit([7,6,4,3,1,12]))
+console.log(maxProfit([7,6,4,3,1]))
