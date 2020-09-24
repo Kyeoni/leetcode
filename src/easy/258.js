@@ -15,8 +15,21 @@
  * @param {number} num
  * @return {number}
  */
+// var addDigits = function(num) {
+//   return (num + '').length > 1 ? addDigits((num + '').split('').reduce((acc, cur) => acc += +cur, 0)) : num
+// };
+
+// var addDigits = function(num) {
+//   if ((num + '').length > 1) {
+//     return addDigits(parseInt(num / 10) % 9 + num % 10)
+//   } else {
+//     return num
+//   }
+// };
+
+// 题解
 var addDigits = function(num) {
-  return (num + '').length > 1 ? addDigits((num + '').split('').reduce((acc, cur) => acc += +cur, 0)) : num
+  return (num - 1) % 9 + 1
 };
 
 console.log(addDigits(0))
