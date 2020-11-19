@@ -16,17 +16,38 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
+// 双指针
 var moveZeroes = function(nums) {
-  let i = nums.length - 1
-  while (i >= 0) {
-    if (nums[i] === 0) {
-      nums.splice(i,1)
-      nums.push(0)
+  let i = 0, j = 0
+  while (j < nums.length) {
+    if (i < nums.length) {
+      if (nums[i] !== 0) {
+        nums[j] = nums[i]
+        j++
+      }
+      i++
+    } else {
+      nums[j] = 0
+      j++
     }
-    i--
   }
   console.log(nums)
 };
-moveZeroes([])
+
+moveZeroes([0,1,0,3,12])
+
+
+// var moveZeroes = function(nums) {
+//   let i = nums.length - 1
+//   while (i >= 0) {
+//     if (nums[i] === 0) {
+//       nums.splice(i,1)
+//       nums.push(0)
+//     }
+//     i--
+//   }
+//   console.log(nums)
+// };
+// moveZeroes([])
 
 
