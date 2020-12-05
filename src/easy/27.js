@@ -38,10 +38,6 @@ for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
 
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/remove-element
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 
 /**
@@ -49,30 +45,30 @@ for (int i = 0; i < len; i++) {
  * @param {number} val
  * @return {number}
  */
-var removeElement = function(nums, val) {
+// var removeElement = function(nums, val) {
 
-    if (nums.length === 0) {
-        return 0
-    }
+//     if (nums.length === 0) {
+//         return 0
+//     }
 
-    for (let i = 0, j = nums.length - 1; ; i++) {
+//     for (let i = 0, j = nums.length - 1; ; i++) {
 
-        while (j != 0 && nums[j] === val) {
-            j--
-        }
+//         while (j != 0 && nums[j] === val) {
+//             j--
+//         }
 
-        if (i >= j) {
-            return nums[i] === val? i : i + 1
-        }
+//         if (i >= j) {
+//             return nums[i] === val? i : i + 1
+//         }
 
-        if (nums[i] === val) {
-           let temp = nums[i]
-           nums[i] = nums[j]
-           nums[j] = temp
-        }
+//         if (nums[i] === val) {
+//            let temp = nums[i]
+//            nums[i] = nums[j]
+//            nums[j] = temp
+//         }
         
-    }
-};
+//     }
+// };
 
 // var removeElement = function(nums, val) {
 //     let insertPos=0;
@@ -84,6 +80,11 @@ var removeElement = function(nums, val) {
 //     return insertPos;
 // };
 
+
+
+var removeElement = function(nums, val) {
+
+};
 
 console.log(removeElement([4,5],4))
 // console.log(removeElement([1],1))
