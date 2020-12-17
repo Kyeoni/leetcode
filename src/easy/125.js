@@ -17,16 +17,39 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
-    s = s.replace(/[^0-9a-zA-Z]/g,'').toLowerCase()
+// 对撞指针
+// var isPalindrome = function(s) {
+//     s = s.replace(/[^0-9a-zA-Z]/g,'').toLowerCase()
 
-    let i = 0, j = s.length -1
-    while (i < j) {
-        if (s[i++] !== s[j--]) {
+//     let i = 0, j = s.length -1
+//     while (i < j) {
+//         if (s[i++] !== s[j--]) {
+//             return false
+//         }
+//     }
+//     return true
+// };
+
+var isPalindrome = function(s) {
+    
+    for (let i = 0, j = s.length - 1; i < j;) {
+        if (!isLetterOrNum(s[i])) {
+            i++
+        } else if (!isLetterOrNum(s[j])) {
+            j--
+        } else if (s[i].toLowerCase() === s[j].toLowerCase()) {
+            i++
+            j--
+        } else {
             return false
         }
     }
     return true
-};
+}
 
-console.log(isPalindrome('a  '))
+const isLetterOrNum = a => {
+    // console.log('a:',a)
+    a = a.charCodeAt()
+    return a >= 48 && a <= 57 || a >= 65 && a <= 90 || a >= 97 && a <= 122
+}
+console.log(isPalindrome('A man, a plan, a canal: Panama'))
